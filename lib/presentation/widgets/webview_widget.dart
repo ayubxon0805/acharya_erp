@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
+import '../../core/router/core_exports.dart';
 
 class WebViewScreen extends StatefulWidget {
   final String url;
@@ -21,19 +20,25 @@ class _WebViewScreenState extends State<WebViewScreen> {
 
   void _initializeWebView() {
     setState(() {
-      _controller = WebViewController()
-        ..setJavaScriptMode(JavaScriptMode.unrestricted)
-        ..loadRequest(Uri.parse(widget.url));
+      _controller =
+          WebViewController()
+            ..setJavaScriptMode(JavaScriptMode.unrestricted)
+            ..loadRequest(Uri.parse(widget.url));
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("WebView")),
-      body: _controller == null
-          ? const Center(child: CircularProgressIndicator())
-          : WebViewWidget(controller: _controller!),
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+      ),
+      body:
+          _controller == null
+              ? const Center(child: CircularProgressIndicator())
+              : WebViewWidget(controller: _controller!),
     );
   }
 }

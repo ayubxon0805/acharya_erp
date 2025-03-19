@@ -1,5 +1,4 @@
-import 'package:acharya_university/presentation/pages/my_drawer/custom_drawer.dart';
-import 'package:flutter/material.dart';
+import '../../core/router/core_exports.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,10 +13,18 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed:() {
-            
-          }, icon: Icon(Icons.notifications))
+          IconButton(
+            onPressed: () {
+              context.pushNamed('notifications');
+            },
+            icon: Icon(Icons.notifications),
+          ),
         ],
+        title: ImageIcon(
+          AssetImage("assets/icons/applogo.png"),
+          size: 180,
+          color: AppColors.mainColor,
+        ),
       ),
       drawer: CustomDrawer(),
     );
